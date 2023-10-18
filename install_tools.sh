@@ -9,7 +9,7 @@ run_as_user() {
 if [ "$1" ]; then
     NORMAL_USER="$1"
 else
-    NORMAL_USER="thomal"
+    NORMAL_USER="user"
 fi
 
 if [ "$UID" != "0" ]; then
@@ -52,6 +52,14 @@ set constantshow
 set softwrap
 
 bind ^' comment main
+EOF
+
+echo "[*] Modifying .tmux.conf"
+run_as_user tee -a /home/$NORMAL_USER/.tmux.conf <<EOF
+
+set -g base-index 1
+setw -g pane-base-index 1
+
 EOF
 
 echo "[*] Set git information:"
