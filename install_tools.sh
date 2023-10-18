@@ -51,7 +51,7 @@ set tabstospaces
 set constantshow
 set softwrap
 
-bind ^' comment main
+bind ^G comment main
 EOF
 
 echo "[*] Modifying .tmux.conf"
