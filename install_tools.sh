@@ -60,6 +60,10 @@ run_as_user tee -a /home/$NORMAL_USER/.tmux.conf <<EOF
 set -g base-index 1
 setw -g pane-base-index 1
 
+setw -g automatic-rename on   # rename window to reflect current program
+set -g renumber-windows on    # renumber windows when a window is closed
+set -g set-titles on          # set terminal title
+
 EOF
 
 echo "[*] Set git information:"
