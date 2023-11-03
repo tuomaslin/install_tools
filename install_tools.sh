@@ -54,6 +54,9 @@ set softwrap
 bind ^G comment main
 EOF
 
+echo "[*] Edit color scheme"
+run_as_user gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+
 echo "[*] Modifying .tmux.conf"
 run_as_user tee -a /home/$NORMAL_USER/.tmux.conf <<EOF
 
