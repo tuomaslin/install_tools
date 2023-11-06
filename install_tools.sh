@@ -38,8 +38,15 @@ apt-get install sublime-text
 
 echo "[*] Modifying .bashrc"
 run_as_user tee -a /home/$NORMAL_USER/.bashrc <<EOF
-
 alias grep="grep --color=auto"
+EOF
+
+echo "[*] Edit color scheme"
+run_as_user gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+
+echo "[*] Changing DIR colors"
+run_as_user tee -a /home/$NORMAL_USER/.dircolors <<EOF
+DIR 01;94
 EOF
 
 echo "[*] Modifying .nanorc"
@@ -53,9 +60,6 @@ set softwrap
 
 bind ^G comment main
 EOF
-
-echo "[*] Edit color scheme"
-run_as_user gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 
 echo "[*] Modifying .tmux.conf"
 run_as_user tee -a /home/$NORMAL_USER/.tmux.conf <<EOF
