@@ -61,6 +61,8 @@ set autoindent
 set zap
 set positionlog
 set afterends
+set breaklonglines
+set fill 139
 
 bind ^G comment main
 EOF
