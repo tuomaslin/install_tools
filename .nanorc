@@ -1,0 +1,14 @@
+include /usr/share/nano/*.nanorc
+
+set tabsize 4
+set tabstospaces
+set constantshow
+set softwrap
+set autoindent
+set zap
+set positionlog
+set afterends
+set breaklonglines
+set fill 139
+
+bind ^G comment main

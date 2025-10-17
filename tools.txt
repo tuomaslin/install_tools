@@ -1,0 +1,12 @@
+sqlmap
+gobuster
+ffuf
+jq
+binwalk
+tree
+testssl.sh
+exiftool
+micro
+fzf
+bat
+aspell

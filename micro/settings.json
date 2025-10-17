@@ -1,0 +1,12 @@
+{
+    "*.yml": {
+        "rmtrailingws": false,
+        "tabsize": 2
+    },
+    "colorcolumn": 100,
+    "hlsearch": true,
+    "rmtrailingws": true,
+    "eofnewline": false,
+    "savecursor": true,
+    "softwrap": true
+}

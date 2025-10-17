@@ -1,0 +1,10 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Ctrl-g": "lua:comment.comment",
+    "CtrlUnderscore": "lua:comment.comment",
+    "F5": "lua:aspell.togglecheck",
+    "Tab": "Autocomplete|lua:aspell.acceptsug|IndentSelection|InsertTab",
+    "Alt-w":"command:textfilter fmt -w 100",
+    "CtrlUp":"ParagraphPrevious",
+    "CtrlDown":"ParagraphNext"
+}
