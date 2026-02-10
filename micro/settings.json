@@ -7,6 +7,5 @@
     "hlsearch": true,
     "rmtrailingws": true,
     "eofnewline": false,
-    "savecursor": true,
     "softwrap": true
 }
