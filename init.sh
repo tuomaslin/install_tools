@@ -37,7 +37,7 @@ run_as_user cp "$PWD/.nanorc" "/home/$NORMAL_USER/.nanorc"
 
 echo -e "\e[31;1m[*] Modifying .bashrc\e[0m"
 run_as_user cat << 'EOF' >> "/home/$NORMAL_USER/.bashrc"
-alias grep='grep --color=auto'
+alias grep='grep --color=always'
 
 export FZF_CTRL_T_OPTS="
   --preview 'batcat -n --theme \"Monokai Extended\" --color=always {}'
@@ -66,8 +66,13 @@ run_as_user gsettings set org.gnome.desktop.interface enable-hot-corners false
 echo -e "\e[31;1m[*] Show battery percentage\e[0m"
 run_as_user gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+echo -e "\e[31;1m[*] Set clock to 24h format and enable seconds\e[0m"
+run_as_user gsettings set org.gnome.desktop.interface clock-format "24h"
+run_as_user gsettings set org.gnome.desktop.interface clock-show-seconds true
+
 echo -e "\e[31;1m[*] Edit color scheme\e[0m"
 run_as_user gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+run_as_user gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 
 echo -e "\e[31;1m[*] Changing DIR colors\e[0m"
 run_as_user cp "$PWD/.dircolors" "/home/$NORMAL_USER/.dircolors"
