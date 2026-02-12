@@ -17,6 +17,8 @@ if [ "$UID" != "0" ]; then
     exit 1
 fi
 
+version_number=$(lsb_release -a | grep Release | awk '{print $2}')
+
 echo -e "\e[31;1m[*] Update\e[0m"
 apt -y update
 
@@ -24,7 +26,7 @@ echo -e "\e[31;1m[*] Install tools:\e[0m"
 cat tools.txt | xargs apt -y install
 
 echo -e "\e[31;1m[*] Download Jython\e[0m"
-run_as_user wget https://repo1.maven.org/maven2/org/python/jython-standalone/2.7.3/jython-standalone-2.7.3.jar -O "/home/$NORMAL_USER/Downloads/jython-standalone-2.7.3.jar"
+run_as_user wget https://repo1.maven.org/maven2/org/python/jython-standalone/2.7.4/jython-standalone-2.7.4.jar -O "/home/$NORMAL_USER/Downloads/jython-standalone-2.7.4.jar"
 
 echo -e "\e[31;1m[*] Download Seclists\e[0m"
 run_as_user git clone --depth 1 https://github.com/danielmiessler/SecLists.git "/home/$NORMAL_USER/seclists"
@@ -66,13 +68,16 @@ run_as_user gsettings set org.gnome.desktop.interface enable-hot-corners false
 echo -e "\e[31;1m[*] Show battery percentage\e[0m"
 run_as_user gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+echo -e "\e[31;1m[*] Edit color scheme\e[0m"
+if [ "$version_number" == "12" ];then
+	run_as_user gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+elif [ "$version_number" == "13" ];then
+	run_as_user gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+fi
+
 echo -e "\e[31;1m[*] Set clock to 24h format and enable seconds\e[0m"
 run_as_user gsettings set org.gnome.desktop.interface clock-format "24h"
 run_as_user gsettings set org.gnome.desktop.interface clock-show-seconds true
-
-echo -e "\e[31;1m[*] Edit color scheme\e[0m"
-run_as_user gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-run_as_user gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 
 echo -e "\e[31;1m[*] Changing DIR colors\e[0m"
 run_as_user cp "$PWD/.dircolors" "/home/$NORMAL_USER/.dircolors"
